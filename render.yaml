@@ -1,0 +1,11 @@
+services:
+  - type: web
+    name: execution-gap
+    env: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: python run.py web --host 0.0.0.0 --port $PORT --db /var/data/execution_gap.sqlite3
+    healthCheckPath: /api/health
+    disk:
+      name: execution-gap-data
+      mountPath: /var/data
+      sizeGB: 1

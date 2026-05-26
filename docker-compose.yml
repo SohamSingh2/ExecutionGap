@@ -1,0 +1,10 @@
+services:
+  execution-gap:
+    build: .
+    ports:
+      - "8765:8765"
+    volumes:
+      - ./data:/data
+    environment:
+      EXECUTION_GAP_DB: /data/execution_gap.sqlite3
+    restart: unless-stopped
